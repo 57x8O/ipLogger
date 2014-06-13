@@ -9,9 +9,10 @@ Parse.Cloud.define("hello", function(request, response) {
 
 
 Parse.Cloud.afterSave("ip", function(request) {
-  var IPLogger_config = require('cloud/mandrillapp_config.js');
+  var config = require('cloud/mandrillapp_config.js');
   var Mandrill = require('mandrill');
-  Mandrill.initialize(IPLogger_config.mandrillAppKey);
+  console.log('key: ' +  config.IPLogger_config.mandrillAppKey);
+  Mandrill.initialize(config.IPLogger_config.mandrillAppKey);
 
   console.log('within afterSave for ip');
   console.log(request.object.id);
@@ -44,8 +45,8 @@ Parse.Cloud.afterSave("ip", function(request) {
           from_name: "IPLogger",
           to: [
             {
-              email: IPLogger_config.your_email,
-              name: IPLogger_config.your_name
+              email: config.IPLogger_config.your_email,
+              name: config.IPLogger_config.your_name
             }
           ]
         },
