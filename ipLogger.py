@@ -1,4 +1,3 @@
-
 from config import config
 C=config()
 
@@ -25,6 +24,7 @@ def getIP():
 
 
 actual_ip = getIP()
+#actual_ip = "111.111.111.120"
 thisIP = ip()
 print actual_ip
 
